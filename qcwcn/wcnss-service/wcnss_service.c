@@ -54,6 +54,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define BYTE_1  8
 #define BYTE_2  16
 #define BYTE_3  24
+#define UNUSED(x)	(void)(x)
 
 #define MAX_FILE_LENGTH    (1024)
 #define WCNSS_MAX_CMD_LEN  (128)
@@ -344,9 +345,9 @@ out_nocopy:
 }
 unsigned int convert_string_to_hex(char* string)
 {
-	int idx = 0;
+	int idx;
 	unsigned long int hex_num = 0;
-	for(idx; string[idx] != '\0'; idx++){
+	for(idx = 0; string[idx] != '\0'; idx++){
 		if(isalpha(string[idx])) {
 			if(string[idx] >='a' && string[idx] <='f') {
 				hex_num = hex_num * HEX_BASE + ((int)string[idx]
@@ -560,6 +561,7 @@ dlopen_err:
 
 int main(int argc, char *argv[])
 {
+	UNUSED(argc), UNUSED(argv);
 	int rc;
 	int fd_dev, ret_cal;
 #if defined(WCNSS_QMI) || defined(WCNSS_QMI_OSS)
