@@ -566,7 +566,6 @@ int main(int argc, char *argv[])
 	int nv_mac_addr = FAILED;
 #ifdef MDM_DETECT
 	struct dev_info mdm_detect_info;
-#endif
 	int nom = 0;
 #endif
 #endif
